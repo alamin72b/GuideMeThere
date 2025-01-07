@@ -12,4 +12,4 @@ class TaskList(ListView):
 #     return render(request, 'login/base.html')
 class TaskDetail(DetailView):
     model = Task
-    context_object_name = 'tasks'
+    context_object_name = 'task'
