@@ -1,0 +1,17 @@
+{% extends "login/base.html" %}
+{% block content %}
+    My To Do list
+    <table>
+        <tr>
+            <th>Items</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{task.title}}</td>
+            </tr>
+            {%empty%}
+            <h3>No items</h3>
+        {% endfor %}
+    </table>
+{% endblock content %}
+
