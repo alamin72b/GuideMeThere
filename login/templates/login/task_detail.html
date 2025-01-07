@@ -1,9 +1,17 @@
 {% extends "login/base.html" %}
 {% block content %}
     My To Do list
+    <p>
+        <a href="{% url 'tasks'%}">Go Back</a>
+    </p>
     <table>
         <tr>
-            <th>{{task}}</th>
+            <th>{{task.title}}</th>
+          
+        </tr>
+        <tr>
+          
+            <th>{{task.description}}</th>
         </tr>
 
        
