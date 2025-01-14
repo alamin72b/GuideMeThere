@@ -1,13 +1,26 @@
 {
-    "builds": [{
+    "version": 2,
+    "builds": [
+      {
         "src": "GuideMeThere/wsgi.py",
         "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-    }],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "GuideMeThere/wsgi.py"
+        "config": {
+          "maxLambdaSize": "15mb",
+          "runtime": "python3.12"
         }
-    ]
-}
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "GuideMeThere/wsgi.py"
+      }
+    ],
+    "env": {
+      "DJANGO_SECRET_KEY": "your-secret-key",
+      "DATABASE_URL": "your-database-url",
+      "ALLOWED_HOSTS": "your-allowed-hosts",
+      "DEBUG": "false"
+    }
+  }
+  
