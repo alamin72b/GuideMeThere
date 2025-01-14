@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Update Task</h1>
+
+    <!-- Display the update form -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Renders the form fields with proper HTML structure -->
+
+        <!-- Submit button to update the task -->
+        <button type="submit">Update Task</button>
+    </form>
+
+    <!-- Link to navigate back to the task list -->
+    <p>
+        <a href="{% url 'tasks' %}">Back to Task List</a>
+    </p>
+{% endblock content %}
