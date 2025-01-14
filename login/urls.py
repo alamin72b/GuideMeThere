@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete,CustomLoginView
+from .views import homePage, TaskDetail, TaskCreate, TaskUpdate, TaskDelete,CustomLoginView
 
 from .views import CustomLogoutView
 urlpatterns = [
@@ -11,7 +11,7 @@ urlpatterns = [
 
 
     # URL for the list of tasks
-    path('', TaskList.as_view(), name='tasks'),
+    path('', homePage.as_view(), name='tasks'),
 
     # URL for viewing the details of a specific task
     path('task/<int:pk>/', TaskDetail.as_view(), name='task'),

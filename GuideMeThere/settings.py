@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'login',
 
 
+
      'widget_tweaks',
 ]
 TAILWIND_APP_NAME = 'theme'
