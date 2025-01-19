@@ -1,24 +1,19 @@
-{% load static tailwind_tags %}
-
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-    <title>Django Tailwind</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap" rel="stylesheet">
-		{% tailwind_css %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Me There</title>
 
-	</head>
-
-	<body class="bg-gray-50 font-serif leading-normal tracking-normal font-akaya">
-		<div class="container mx-auto">
-
-			{% block navbar %}{% endblock navbar %}
-			
-            {% block content %}{% endblock content %}
-		</div>
-	</body>
+    <!-- Load Static Files -->
+    {% load static %}
+    
+    <!-- Link to the login.css file -->
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <!-- Page content -->
+    {% block content %}
+    {% endblock %}
+</body>
 </html>

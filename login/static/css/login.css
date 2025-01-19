@@ -1,0 +1,131 @@
+/* login.css */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7fafc;
+    position: relative;
+  }
+  
+  .background-grid {
+    position: absolute;
+    inset: 0;
+    background: #e2e8f0;
+    opacity: 0.1;
+  }
+  
+  .login-card {
+    position: relative;
+  }
+  
+  .yellow-shadow {
+    position: absolute;
+    inset: 0;
+    transform: translate(2px, 2px);
+    background-color: #facc15;
+    border-radius: 8px;
+  }
+  
+  .login-form {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    border-top: 2px dashed black;
+    border-left: 2px dashed black;
+    padding: 32px;
+    width: 380px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    text-align: center;
+    color: #4a5568;
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+  
+  .login-header {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .label {
+    display: block;
+    font-size: 14px;
+    font-weight: medium;
+    color: #4a5568;
+    margin-bottom: 8px;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    outline: none;
+    border-color: #facc15;
+    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.5);
+  }
+  
+  .error {
+    color: #f56565;
+    font-size: 12px;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  
+  .remember-me {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+  }
+  
+  .forgot-password {
+    font-size: 12px;
+    color: #718096;
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #facc15;
+    color: black;
+  }
+  
