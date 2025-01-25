@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="place-detail">
+  <h2>{{ place.name }}</h2>
+  <img src="{{ place.image.url }}" alt="{{ place.name }}">
+  <p>Location: {{ place.location }}</p>
+  <p>{{ place.description }}</p>
+</div>
+{% endblock content %}

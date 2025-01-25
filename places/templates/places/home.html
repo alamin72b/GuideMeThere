@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GuideMeThere - Home</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <a href="{% url 'home' %}">GuideMeThere</a>
+      </div>
+      <nav>
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        {% if user.is_authenticated %}
+        <span class="welcome-message">Hello, {{ user.username }}!</span>
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+      </nav>
+    </header>
+
+    <!-- Slider container -->
+    <div class="slider">
+      <!-- The main list of items -->
+      <div class="list">
+        {% for place in places %}
+        <div class="item">
+          {% if place.image %}
+          <img src="{{ place.image.url }}" alt="{{ place.name }}" />
+          {% else %}
+          <!-- Fallback image if no image is uploaded -->
+          <img src="{% static 'images/img1.jpg' %}" alt="Default Image" />
+          {% endif %}
+
+          <div class="content">
+            <div class="type">{{ place.name }}</div>
+            <div class="description">{{ place.description }}</div>
+            <div class="button">
+              <a href="{% url 'place_detail' place.id %}">
+                <button>SEE MORE</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Thumbnails below the main image -->
+      <div class="thumbnail">
+        {% for place in places %}
+        <div class="item">
+          {% if place.image %}
+          <img src="{{ place.image.url }}" alt="{{ place.name }}" />
+          {% else %}
+          <!-- Fallback image if no image is uploaded -->
+          <img src="{% static 'images/img1.jpg' %}" alt="Default Image" />
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Navigation arrows -->
+      <div class="nextPrevArrows">
+        <button class="prev"><</button>
+        <button class="next">></button>
+      </div>
+    </div>
+
+    <!-- Grid Section: Showcase Places -->
+    <section class="places-grid">
+      <h2>Explore Our Places</h2>
+      <div class="grid-container">
+        {% for place in places %}
+        <div class="grid-item">
+          <div class="place-image">
+            {% if place.image %}
+            <img
+              src="{{ place.image.url }}"
+              alt="{{ place.name }}"
+              loading="lazy"
+            />
+            {% else %}
+            <img
+              src="{% static 'images/img1.jpg' %}"
+              alt="Default Image"
+              loading="lazy"
+            />
+            {% endif %}
+          </div>
+          <div class="place-info">
+            <h3>{{ place.name }}</h3>
+            <p>{{ place.description|truncatechars:100 }}</p>
+            <a href="{% url 'place_detail' place.id %}" class="see-more"
+              >See More</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    <!-- End of Grid Section -->
+
+    <!-- Reviews Section: What People Say -->
+    <section class="reviews-section">
+      <h2>What People Say About Our Places</h2>
+      <div class="reviews-container">
+        {% for review in reviews %}
+        <div class="review-item">
+          <div class="review-header">
+            <div class="reviewer-name">{{ review.name }}</div>
+            <div class="review-rating">
+              {% for i in "12345"|slice:":review.rating" %}
+              <span class="star">&#9733;</span>
+              {% endfor %} {% for i in "12345"|slice:"review.rating:" %}
+              <span class="star">&#9734;</span>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="review-comment">{{ review.comment|linebreaks }}</div>
+          <div class="review-place">
+            <a href="{% url 'place_detail' review.place.id %}"
+              >{{ review.place.name }}</a
+            >
+          </div>
+        </div>
+        {% empty %}
+        <p>No reviews yet. Be the first to review!</p>
+        {% endfor %}
+      </div>
+    </section>
+    <!-- End of Reviews Section -->
+
+    <!-- JS -->
+    <script src="{% static 'js/home.js' %}"></script>
+  </body>
+</html>

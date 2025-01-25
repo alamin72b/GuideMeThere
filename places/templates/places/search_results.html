@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Search Results for "{{ query }}"</h1>
+{% if results %}
+    <ul>
+        {% for place in results %}
+        <li>
+            <a href="{% url 'place_detail' place.id %}">
+                {{ place.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+{% endblock %}
