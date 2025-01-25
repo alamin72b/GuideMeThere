@@ -58,9 +58,12 @@ def place_detail(request, place_id):
     return render(request, 'places/place_detail.html', context)
 
 def search_view(request):
-    query = request.GET.get('q')
+    query = request.GET.get("q", "")
     results = Place.objects.filter(name__icontains=query) if query else []
-    return render(request, 'places/search_results.html', {'results': results, 'query': query})
+    return render(request, "places/search_results.html", {
+        "query": query,
+        "results": results
+    })
 
 
 def place_detail(request, place_id):

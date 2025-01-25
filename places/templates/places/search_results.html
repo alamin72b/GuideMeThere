@@ -1,17 +1,75 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1>Search Results for "{{ query }}"</h1>
-{% if results %}
-    <ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GuideMeThere - Results</title>
+  {% load static %}
+  
+  <!-- CSS File -->
+  <link rel="stylesheet" href="{% static 'css/results.css' %}" />
+  
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap"
+    rel="stylesheet"
+  />
+  
+  <!-- Font Awesome (optional for icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <a href="{% url 'home' %}">GuideMeThere</a>
+    </div>
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="#">About</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+      {% if user.is_authenticated %}
+        <span class="welcome-message">Hello, {{ user.username }}!</span>
+        <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <!-- PAGE TITLE -->
+  <h1 class="page-title">Search Results for "{{ query }}"</h1>
+
+  <!-- RESULTS WRAPPER -->
+  <div class="results-container">
+    {% if results %}
+      <div class="results-grid">
         {% for place in results %}
-        <li>
-            <a href="{% url 'place_detail' place.id %}">
-                {{ place.name }}
-            </a>
-        </li>
+          <div class="result-card">
+            <!-- Optional image -->
+            {% if place.image %}
+              <img src="{{ place.image.url }}" alt="{{ place.name }}">
+            {% else %}
+              <img src="{% static 'images/img1.jpg' %}" alt="Default Image">
+            {% endif %}
+
+            <div class="result-info">
+              <h3>{{ place.name }}</h3>
+              <p>{{ place.description|truncatechars:100 }}</p>
+              <a href="{% url 'place_detail' place.id %}" class="see-more">See More</a>
+            </div>
+          </div>
         {% endfor %}
-    </ul>
-{% else %}
-    <p>No results found.</p>
-{% endif %}
-{% endblock %}
+      </div>
+    {% else %}
+      <p>No results found.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

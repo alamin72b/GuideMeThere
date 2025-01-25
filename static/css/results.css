@@ -1,0 +1,167 @@
+/*************************************************************/
+/*                       GLOBAL RESET & FONT                */
+/*************************************************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000; /* black theme */
+    color: #eee;
+    font-size: 16px;
+    font-family: "Akaya Telivigala", cursive, sans-serif;
+    overflow-x: hidden;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /*************************************************************/
+  /*                       HEADER / NAV BAR                   */
+  /*************************************************************/
+  header {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: 0;
+    z-index: 9999;
+    padding: 0 20px;
+  }
+  .logo a {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #14ff72cb;
+    transition: color 0.3s;
+  }
+  .logo a:hover {
+    color: #fff;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  nav a {
+    color: #eee;
+    padding: 5px 10px;
+    transition: 0.2s;
+    font-size: 1em;
+  }
+  nav a.active {
+    background: #14ff72cb;
+    border-radius: 2px;
+  }
+  nav a:hover {
+    background: #14ff72cb;
+    border-radius: 2px;
+  }
+  .welcome-message {
+    margin-right: 10px;
+    font-size: 1em;
+    color: #14ff72cb;
+  }
+  
+  /*************************************************************/
+  /*                     PAGE TITLE / HEADING                 */
+  /*************************************************************/
+  .page-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 80px; /* space below nav */
+    color: #14ff72cb;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+  }
+  
+  /*************************************************************/
+  /*                   RESULTS CONTAINER                      */
+  /*************************************************************/
+  .results-container {
+    max-width: 1140px;
+    margin: 30px auto 60px;
+    padding: 0 20px; /* horizontal spacing */
+  }
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .result-card {
+    background-color: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left; /* or center */
+  }
+  .result-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+  .result-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+  .result-info {
+    padding: 15px;
+  }
+  .result-info h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: #14ff72cb;
+  }
+  .result-info p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #ccc;
+  }
+  .see-more {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #14ff72cb;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .see-more:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  /*************************************************************/
+  /*                  RESPONSIVE ADJUSTMENTS                  */
+  /*************************************************************/
+  @media screen and (max-width: 768px) {
+    header {
+      flex-direction: column;
+      height: auto;
+      padding: 10px 20px;
+    }
+    nav {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .page-title {
+      margin-top: 120px; /* extra space if header isn't fixed */
+    }
+  }
+  
