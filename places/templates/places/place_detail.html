@@ -1,10 +1,124 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-<div class="place-detail">
-  <h2>{{ place.name }}</h2>
-  <img src="{{ place.image.url }}" alt="{{ place.name }}">
-  <p>Location: {{ place.location }}</p>
-  <p>{{ place.description }}</p>
-</div>
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Place Detail - Vertical Tabs</title>
+  {% load static %}
+  <!-- Optional: load Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <!-- Link to a separate CSS file OR embed styles directly below -->
+  <link rel="stylesheet" href="{% static 'css/place_detail.css' %}">
+  <!-- Google Font: Akaya Telivigala (same as home page) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <!-- HEADER / NAV BAR -->
+  <header>
+    <div class="logo">
+      <a href="{% url 'home' %}">GuideMeThere</a>
+    </div>
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="#">About</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+      {% if user.is_authenticated %}
+        <span class="welcome-message">Hello, {{ user.username }}!</span>
+        <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <!-- PAGE TITLE -->
+  <h1 class="page-title">{{ place.name }}</h1>
+
+  <!-- TABS CONTAINER -->
+  <div class="tabs-container">
+    <!-- Radio Buttons for Tabs -->
+    <input type="radio" name="indicator" id="details" checked />
+    <input type="radio" name="indicator" id="location" />
+    <input type="radio" name="indicator" id="reviews" />
+    <input type="radio" name="indicator" id="addreview" />
+
+    <!-- Tabs List -->
+    <div class="tabs-list">
+      <label for="details"><i class="fas fa-image"></i> Details</label>
+      <label for="location"><i class="fas fa-map-marker-alt"></i> Location</label>
+      <label for="reviews"><i class="fas fa-comments"></i> Reviews</label>
+      <label for="addreview"><i class="fas fa-pen"></i> Write Review</label>
+      <div class="tab-indicator"></div>
+    </div>
+
+    <!-- Tabs Content -->
+    <div class="tabs-content">
+      
+      <!-- DETAILS TAB: Single image from the DB -->
+      <div class="tab-panel details-tab">
+        <h2>Place Image</h2>
+        <div class="detail-image">
+          {% if place.image %}
+            <img src="{{ place.image.url }}" alt="{{ place.name }}">
+          {% else %}
+            <img src="{% static 'images/img1.jpg' %}" alt="Default Image">
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- LOCATION TAB -->
+      <div class="tab-panel location-tab">
+        <h2>Location</h2>
+        {% if place.location %}
+          <p>{{ place.location }}</p>
+        {% else %}
+          <p>Location details coming soon...</p>
+        {% endif %}
+      </div>
+      
+      <!-- REVIEWS TAB: Grid view -->
+      <div class="tab-panel reviews-tab">
+        <h2>Reviews</h2>
+        <div class="reviews-grid">
+          {% if reviews %}
+            {% for review in reviews %}
+              <div class="review-card">
+                <strong>{{ review.name }}</strong> 
+                <span>(Rating: {{ review.rating }}/5)</span>
+                <p>{{ review.comment|linebreaks }}</p>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p>No reviews yet. Be the first to review!</p>
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- ADD REVIEW TAB -->
+      <div class="tab-panel addreview-tab">
+        <h2>Write a Review</h2>
+        {% if user.is_authenticated %}
+          <form method="POST" class="review-form">
+            {% csrf_token %}
+            {{ review_form.as_p }}
+            <button type="submit">Submit Review</button>
+          </form>
+        {% else %}
+          <p>Please <a href="{% url 'login' %}">log in</a> to leave a review.</p>
+        {% endif %}
+      </div>
+      
+    </div><!-- /.tabs-content -->
+
+  </div><!-- /.tabs-container -->
+</body>
+</html>

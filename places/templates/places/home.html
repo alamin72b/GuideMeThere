@@ -33,6 +33,10 @@
         <a href="{% url 'signup' %}">Sign Up</a>
         {% endif %}
       </nav>
+      <form action="{% url 'search' %}" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search places..." />
+        <button type="submit">Search</button>
+      </form>
     </header>
 
     <!-- Slider container -->
