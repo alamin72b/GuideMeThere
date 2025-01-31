@@ -23,51 +23,105 @@
   /*************************************************************/
   /*                       HEADER / NAV BAR                   */
   /*************************************************************/
-  header {
-    width: 100%;
-    max-width: 1140px;
-    margin: 0 auto;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
+/* Header Styling */
+header {
+    position: fixed;
     top: 0;
-    z-index: 9999;
-    padding: 0 20px;
+    left: 0;
+    width: 100%;
+    height: 60px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 9999; /* Make sure it stays on top */
+    background-color: #000; /* Solid background color */
+    padding: 0 20px; /* Horizontal padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Optional: subtle shadow */
   }
+  
+  /* Logo Section */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between image and text */
+  }
+  
+  .logo img {
+    width: 40px; /* Adjust the size as needed */
+    height: auto;
+    border-radius: 5px; /* Optional: rounded corners */
+    max-width: 100%; /* Ensure it doesn’t overflow its container */
+    object-fit: contain; /* Scale the image within its box */
+    display: block; /* Prevent extra space below the image */
+  }
+  
   .logo a {
     font-size: 1.8em;
     font-weight: bold;
-    color: #14ff72cb;
+    color: #14ff72cb; /* Highlighted color for logo text */
     transition: color 0.3s;
   }
+  
   .logo a:hover {
     color: #fff;
   }
+  
+  /* Navigation Styling */
   nav {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 15px; /* Space between navigation links */
   }
+  
   nav a {
     color: #eee;
     padding: 5px 10px;
     transition: 0.2s;
     font-size: 1em;
   }
+  
   nav a.active {
     background: #14ff72cb;
     border-radius: 2px;
   }
+  
   nav a:hover {
     background: #14ff72cb;
     border-radius: 2px;
   }
+  
   .welcome-message {
     margin-right: 10px;
     font-size: 1em;
     color: #14ff72cb;
+  }
+  
+  /* Search Form Styling */
+  .search-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-form input {
+    padding: 5px 8px;
+    border: 1px solid #333;
+    background-color: #222;
+    color: #eee;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .search-form button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #14ff72cb;
+    color: #000;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.3s;
+  }
+  
+  .search-form button:hover {
+    background-color: #fff;
   }
   
   /*************************************************************/

@@ -1,42 +1,58 @@
-/* Existing Global Styles */
+/* ================================================
+   Global Styles
+   ================================================ */
+
+/* Set base font, remove default margins and padding, and define background and text colors */
 body {
-  font-family: "Akaya Telivigala", cursive, sans-serif; /* Global font setting */
+  font-family: "Akaya Telivigala", cursive, sans-serif;
   margin: 0;
   background-color: #000;
   color: #eee;
   font-size: 16px;
   padding: 0;
 }
+
+/* Remove underline from all links and inherit text color */
 a {
   text-decoration: none;
+  color: inherit;
 }
 
+/* ================================================
+   Header Styles
+   ================================================ */
+
+/* Header container spanning full width, fixed position, with flex layout */
 header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100%; /* Full width of the page */
   height: 60px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-around; /* Distribute space between logo/nav/search */
   align-items: center;
-  z-index: 9999; /* Make sure it stays on top of the slider */
-  /* Add background if you want a solid color behind the nav */
-  background-color: #000;
-  /* If using a container width, adjust. Otherwise, let it stretch across full width */
+  padding: 0 20px; /* Horizontal padding inside the header */
+  z-index: 9999; /* Keep on top of other elements */
+  background-color: #000; /* Solid background color (black theme) */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Optional subtle shadow */
 }
-/* Logo Section */
+
+/* Logo section within the header, using flex layout for alignment */
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between image and text */
+  gap: 10px; /* Space between logo image and text */
 }
 
+/* Logo image styling with fixed width and optional rounded corners */
 .logo img {
   width: 40px; /* Adjust the size as needed */
   height: auto;
   border-radius: 5px; /* Optional: rounded corners */
 }
+
+/* Logo text styling with highlighted color and hover effect */
 .logo a {
   font-size: 1.8em;
   font-weight: bold;
@@ -48,12 +64,14 @@ header {
   color: #fff;
 }
 
+/* Navigation bar styling using flex layout */
 nav {
   display: flex;
   align-items: center;
   gap: 15px; /* Space between navigation links */
 }
 
+/* Navigation links default styling */
 nav a {
   color: #eee;
   padding: 5px 10px;
@@ -61,69 +79,90 @@ nav a {
   font-size: 1em;
 }
 
+/* Styling for the active navigation link */
 nav a.active {
   background: #14ff72cb;
   border-radius: 2px;
 }
 
+/* Hover effect for navigation links */
 nav a:hover {
   background: #14ff72cb;
   border-radius: 2px;
 }
 
+/* Welcome message styling for authenticated users */
 .welcome-message {
   margin-right: 10px;
   font-size: 1em;
   color: #14ff72cb;
 }
 
+/* ================================================
+   Search Form Styles
+   ================================================ */
+
+/* Search form container with flex layout */
 .search-form {
   display: flex;
   align-items: center;
-  margin-left: 20px; /* Adjust spacing as needed */
+  margin-left: 20px; /* Adjust if needed */
 }
 
+/* Search input styling */
 .search-form input {
   padding: 5px 8px;
   border: 1px solid #333;
   background-color: #222;
   color: #eee;
+  border-radius: 4px 0 0 4px;
 }
 
+/* Search button styling with hover effect */
 .search-form button {
   padding: 5px 10px;
   border: none;
   background-color: #14ff72cb;
   color: #000;
   cursor: pointer;
-  margin-left: 5px;
+  border-radius: 0 4px 4px 0;
   transition: background-color 0.3s;
+  margin-left: 0; /* Override if previously set */
 }
 
 .search-form button:hover {
   background-color: #fff;
 }
 
-/* slider section  */
+/* ================================================
+   Slider Section Styles
+   ================================================ */
+
+/* Slider container positioned below the fixed header */
 .slider {
-  /* If your header is 60px high, subtract it from 100vh */
-  margin-top: 60px;
+  margin-top: 60px; /* Account for fixed header height */
   height: calc(100vh - 60px);
   width: 100vw;
   position: relative;
   overflow: hidden;
 }
+
+/* Slider items positioned absolutely to overlap each other */
 .slider .list .item {
   width: 100%;
   height: 100%;
   position: absolute;
-  inset: 0 0 0 0;
+  inset: 0;
 }
+
+/* Slider images styled to cover the entire slider area */
 .slider .list .item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+/* Content overlay within each slider item */
 .slider .list .item .content {
   position: absolute;
   top: 20%;
@@ -137,15 +176,19 @@ nav a:hover {
   text-shadow: 0 5px 10px #0004;
 }
 
+/* Title and type styling within slider content */
 .slider .list .item .content .title,
 .slider .list .item .content .type {
   font-size: 5em;
   font-weight: bold;
   line-height: 1.3em;
 }
-.slider .list .item .type {
+
+.slider .list .item .content .type {
   color: #14ff72cb;
 }
+
+/* Button container within slider content using grid layout */
 .slider .list .item .button {
   display: grid;
   grid-template-columns: repeat(2, 130px);
@@ -153,10 +196,12 @@ nav a:hover {
   gap: 5px;
   margin-top: 20px;
 }
+
+/* Slider buttons styling with hover effects */
 .slider .list .item .button button {
   border: none;
   background-color: #eee;
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: 0.4s;
@@ -166,13 +211,19 @@ nav a:hover {
 .slider .list .item .button button:hover {
   letter-spacing: 3px;
 }
+
+/* Second button in slider has different styling */
 .slider .list .item .button button:nth-child(2) {
   background-color: transparent;
   border: 1px solid #fff;
   color: #eee;
 }
 
-/* Thumbnail Section  */
+/* ================================================
+   Thumbnail Section Styles
+   ================================================ */
+
+/* Thumbnail container positioned at the bottom center of the slider */
 .thumbnail {
   position: absolute;
   bottom: 50px;
@@ -183,6 +234,7 @@ nav a:hover {
   gap: 20px;
 }
 
+/* Individual thumbnail item styling */
 .thumbnail .item {
   width: 150px;
   height: 220px;
@@ -190,6 +242,7 @@ nav a:hover {
   position: relative;
 }
 
+/* Thumbnail images styled with rounded corners and shadow */
 .thumbnail .item img {
   width: 100%;
   height: 100%;
@@ -198,7 +251,11 @@ nav a:hover {
   box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
 }
 
-/* nextPrevArrows Section  */
+/* ================================================
+   Navigation Arrows Styles
+   ================================================ */
+
+/* Container for next and previous navigation arrows */
 .nextPrevArrows {
   position: absolute;
   top: 80%;
@@ -210,6 +267,8 @@ nav a:hover {
   gap: 10px;
   align-items: center;
 }
+
+/* Styling for navigation buttons with hover effects */
 .nextPrevArrows button {
   width: 40px;
   height: 40px;
@@ -217,22 +276,27 @@ nav a:hover {
   background-color: #14ff72cb;
   border: none;
   color: #fff;
-  font-family: monospace;
+  font-family: monospace, sans-serif;
   font-weight: bold;
   transition: 0.5s;
   cursor: pointer;
 }
+
 .nextPrevArrows button:hover {
   background-color: #fff;
   color: #000;
 }
 
-/* Animation Part */
+/* ================================================
+   Slider Item Animations
+   ================================================ */
+
+/* Ensure the first slider item is on top */
 .slider .list .item:nth-child(1) {
   z-index: 1;
 }
 
-/* animation text in first item */
+/* Animate content elements within the first slider item */
 .slider .list .item:nth-child(1) .content .title,
 .slider .list .item:nth-child(1) .content .type,
 .slider .list .item:nth-child(1) .content .description,
@@ -242,127 +306,38 @@ nav a:hover {
   opacity: 0;
   animation: showContent 0.5s 1s linear 1 forwards;
 }
+
+/* Keyframes for content animation */
 @keyframes showContent {
   to {
-    transform: translateY(0px);
-    filter: blur(0px);
+    transform: translateY(0);
+    filter: blur(0);
     opacity: 1;
   }
 }
+
+/* Delayed animations for specific content elements */
 .slider .list .item:nth-child(1) .content .title {
   animation-delay: 0.4s !important;
 }
+
 .slider .list .item:nth-child(1) .content .type {
   animation-delay: 0.6s !important;
 }
+
 .slider .list .item:nth-child(1) .content .description {
   animation-delay: 0.8s !important;
 }
+
 .slider .list .item:nth-child(1) .content .buttons {
   animation-delay: 1s !important;
 }
 
-/* Animation for next button click */
-.slider.next .list .item:nth-child(1) img {
-  width: 150px;
-  height: 220px;
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  border-radius: 30px;
-  animation: showImage 0.5s linear 1 forwards;
-}
+/* ================================================
+   Slider Loader Styles (Optional)
+   ================================================ */
 
-@keyframes showImage {
-  to {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-  }
-}
-
-.slider.next .thumbnail .item:nth-last-child(1) {
-  overflow: hidden;
-  animation: showThumbnail 0.5s linear 1 forwards;
-}
-.slider.prev .list .item img {
-  z-index: 100;
-}
-
-@keyframes showThumbnail {
-  from {
-    width: 0;
-    opacity: 0;
-  }
-}
-
-.slider.next .thumbnail {
-  animation: effectNext 0.5s linear 1 forwards;
-}
-
-@keyframes effectNext {
-  from {
-    transform: translateX(150px);
-  }
-}
-
-/* Animation for prev button click */
-.slider.prev .list .item:nth-child(2) {
-  z-index: 2;
-}
-
-.slider.prev .list .item:nth-child(2) img {
-  animation: outFrame 0.5s linear 1 forwards;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-@keyframes outFrame {
-  to {
-    width: 150px;
-    height: 220px;
-    bottom: 50px;
-    left: 50%;
-    border-radius: 20px;
-  }
-}
-
-.slider.prev .thumbnail .item:nth-child(1) {
-  overflow: hidden;
-  opacity: 0;
-  animation: showThumbnail 0.5s linear 1 forwards;
-}
-.slider.next .nextPrevArrows button,
-.slider.prev .nextPrevArrows button {
-  pointer-events: none;
-}
-
-.slider.prev .list .item:nth-child(2) .content .title,
-.slider.prev .list .item:nth-child(2) .content .type,
-.slider.prev .list .item:nth-child(2) .content .description,
-.slider.prev .list .item:nth-child(2) .content .buttons {
-  animation: contentOut 1.5s linear 1 forwards !important;
-}
-
-@keyframes contentOut {
-  to {
-    transform: translateY(-150px);
-    filter: blur(20px);
-    opacity: 0;
-  }
-}
-@media screen and (max-width: 678px) {
-  .slider .list .item .content {
-    padding-right: 0;
-  }
-  .slider .list .item .content .title {
-    font-size: 50px;
-  }
-}
-
-/* Loader for automatic slider */
+/* Loader bar below the slider for automatic transitions */
 .slider-loader {
   position: absolute;
   bottom: 10px;
@@ -375,6 +350,7 @@ nav a:hover {
   z-index: 100;
 }
 
+/* Animated loader effect */
 .slider-loader::before {
   content: "";
   display: block;
@@ -386,6 +362,7 @@ nav a:hover {
   animation: slide-loader 5s linear infinite;
 }
 
+/* Keyframes for loader animation */
 @keyframes slide-loader {
   0% {
     transform: scaleX(0);
@@ -394,53 +371,146 @@ nav a:hover {
     transform: scaleX(1);
   }
 }
+
+/* Description section within slider items with overflow handling */
 .description {
   max-height: 150px;
   overflow-y: auto;
 }
+
+/* ================================================
+   Responsive Adjustments
+   ================================================ */
+
+/* Tablet and Small Device Adjustments (Max Width: 768px) */
 @media screen and (max-width: 768px) {
+  /* Stack header elements vertically and adjust padding */
   header {
     flex-direction: column;
     height: auto;
-    padding: 10px 0;
+    padding: 10px 20px;
   }
 
+  /* Allow navigation links to wrap and center align */
   nav {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
   }
 
+  /* Add margin below logo text */
   .logo a {
     margin-bottom: 10px;
   }
-}
 
-@media screen and (max-width: 480px) {
-  header {
-    max-width: 90%;
+  /* Reduce slider title and type font sizes for smaller screens */
+  .slider .list .item .content .title,
+  .slider .list .item .content .type {
+    font-size: 3em; /* Smaller font size for tablets and smaller devices */
   }
 
+  /* Adjust slider container height if necessary */
+  .slider {
+    height: calc(100vh - 60px);
+  }
+
+  /* Adjust search form spacing */
+  .search-form {
+    margin-left: 0; /* Remove left margin */
+    margin-top: 10px; /* Add top margin */
+  }
+
+  /* Adjust thumbnail sizes for smaller screens */
+  .thumbnail .item {
+    width: 120px;
+    height: 180px;
+  }
+
+  /* Adjust navigation arrows position and size */
+  .nextPrevArrows {
+    top: 75%;
+    right: 45%;
+  }
+
+  .nextPrevArrows button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Mobile Device Adjustments (Max Width: 480px) */
+@media screen and (max-width: 480px) {
+  /* Reduce header padding for very small screens */
+  header {
+    padding: 10px;
+  }
+
+  /* Make the search form input narrower */
+  .search-form input {
+    width: 80px;
+  }
+
+  /* Reduce search button padding and font size */
+  .search-form button {
+    padding: 3px 6px;
+    font-size: 0.85em;
+  }
+
+  /* Decrease navigation link padding and font size */
   nav a {
     padding: 5px 8px;
     font-size: 0.9em;
   }
 
+  /* Hide welcome message on very small screens */
   .welcome-message {
-    display: none; /* Hide greeting on very small screens */
+    display: none;
+  }
+
+  /* Further reduce slider title and type font sizes */
+  .slider .list .item .content .title,
+  .slider .list .item .content .type {
+    font-size: 2em; /* Even smaller font size for mobile phones */
+  }
+
+  /* Adjust thumbnail sizes for mobile devices */
+  .thumbnail .item {
+    width: 80px;
+    height: 120px;
+  }
+
+  /* Adjust navigation arrows position and size for mobile */
+  .nextPrevArrows {
+    top: 75%;
+    right: 45%;
+  }
+
+  .nextPrevArrows button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+
+  /* Adjust slider loader if present */
+  .slider-loader {
+    width: 90%;
   }
 }
 
-/* Existing Styles... */
+/* ================================================
+   Places Grid Section Styles
+   ================================================ */
 
-/* Grid Section: Showcase Places */
+/* Container for the places grid section */
 .places-grid {
   padding: 50px 20px;
-  background-color: #111; /* Dark background to match the theme */
+  background-color: #111;
   color: #eee;
   text-align: center;
 }
 
+/* Section heading styling with underline */
 .places-grid h2 {
   font-size: 2.5em;
   margin-bottom: 30px;
@@ -457,6 +527,7 @@ nav a:hover {
   border-radius: 2px;
 }
 
+/* Grid container using CSS Grid for responsive layout */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -465,6 +536,7 @@ nav a:hover {
   margin: 0 auto;
 }
 
+/* Individual grid item styling with hover effects */
 .grid-item {
   background-color: #222;
   border-radius: 10px;
@@ -478,6 +550,7 @@ nav a:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
+/* Place image within grid item */
 .place-image img {
   width: 100%;
   height: 180px;
@@ -485,6 +558,7 @@ nav a:hover {
   display: block;
 }
 
+/* Place information styling */
 .place-info {
   padding: 15px;
   text-align: left;
@@ -503,6 +577,7 @@ nav a:hover {
   color: #ccc;
 }
 
+/* "See More" button styling with hover effect */
 .see-more {
   display: inline-block;
   padding: 8px 16px;
@@ -520,7 +595,11 @@ nav a:hover {
   color: #000;
 }
 
-/* Responsive Adjustments for Grid Section */
+/* ================================================
+   Responsive Adjustments for Places Grid Section
+   ================================================ */
+
+/* Tablet and Small Device Adjustments (Max Width: 768px) */
 @media screen and (max-width: 768px) {
   .places-grid {
     padding: 40px 15px;
@@ -539,6 +618,7 @@ nav a:hover {
   }
 }
 
+/* Mobile Device Adjustments (Max Width: 480px) */
 @media screen and (max-width: 480px) {
   .places-grid {
     padding: 30px 10px;
@@ -558,22 +638,19 @@ nav a:hover {
   }
 }
 
-/* Prevent Overflow Issues */
-body,
-html {
-  overflow-x: hidden;
-}
-/* Existing Global Styles */
-/* ... existing styles ... */
+/* ================================================
+   Reviews Section Styles
+   ================================================ */
 
-/* Reviews Section */
+/* Container for the reviews section */
 .reviews-section {
   padding: 50px 20px;
-  background-color: #111; /* Dark background to match the theme */
+  background-color: #111;
   color: #eee;
   text-align: center;
 }
 
+/* Section heading styling with underline */
 .reviews-section h2 {
   font-size: 2.5em;
   margin-bottom: 30px;
@@ -590,6 +667,7 @@ html {
   border-radius: 2px;
 }
 
+/* Container for all review items using flex layout */
 .reviews-container {
   display: flex;
   flex-wrap: wrap;
@@ -599,6 +677,7 @@ html {
   margin: 0 auto;
 }
 
+/* Individual review item styling with hover effects */
 .review-item {
   background-color: #222;
   border-radius: 10px;
@@ -616,6 +695,7 @@ html {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
+/* Header within each review item */
 .review-header {
   display: flex;
   justify-content: space-between;
@@ -623,17 +703,20 @@ html {
   margin-bottom: 15px;
 }
 
+/* Reviewer name styling */
 .reviewer-name {
   font-size: 1.2em;
   font-weight: bold;
   color: #14ff72cb;
 }
 
+/* Star rating styling */
 .review-rating .star {
   color: #ffd700; /* Gold color for stars */
   font-size: 1.2em;
 }
 
+/* Review comment styling with overflow handling */
 .review-comment {
   font-size: 0.95em;
   line-height: 1.5;
@@ -642,6 +725,7 @@ html {
   margin-bottom: 15px;
 }
 
+/* Link to the reviewed place with hover effect */
 .review-place a {
   color: #14ff72cb;
   text-decoration: none;
@@ -653,6 +737,11 @@ html {
   color: #fff;
 }
 
+/* ================================================
+   Responsive Adjustments for Reviews Section
+   ================================================ */
+
+/* Tablet and Small Device Adjustments (Max Width: 768px) */
 @media screen and (max-width: 768px) {
   .reviews-section {
     padding: 40px 15px;
@@ -663,10 +752,11 @@ html {
   }
 
   .review-item {
-    width: 45%;
+    width: 45%; /* Two reviews per row */
   }
 }
 
+/* Mobile Device Adjustments (Max Width: 480px) */
 @media screen and (max-width: 480px) {
   .reviews-section {
     padding: 30px 10px;
@@ -677,9 +767,10 @@ html {
   }
 
   .review-item {
-    width: 100%;
+    width: 100%; /* Single review per row */
   }
 
+  /* Stack review header elements vertically */
   .review-header {
     flex-direction: column;
     align-items: flex-start;
@@ -690,10 +781,191 @@ html {
   }
 }
 
-/* Prevent Overflow Issues */
+/* ================================================
+   Footer Section Styles
+   ================================================ */
+
+/* Footer container spanning full width with flex layout */
+footer {
+  background-color: #111; /* Dark background to match theme */
+  color: #eee; /* Light text color for contrast */
+  padding: 40px 20px; /* Padding around footer content */
+}
+
+/* Footer container using flex layout to organize content */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  justify-content: space-between; /* Distribute space between footer sections */
+  max-width: 1140px; /* Maximum width for content */
+  margin: 0 auto; /* Center the footer content */
+  gap: 20px; /* Space between footer sections */
+}
+
+/* Footer Branding Section */
+.footer-branding {
+  flex: 1 1 250px; /* Flex properties for responsiveness */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-branding a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo {
+  width: 50px; /* Adjust logo size as needed */
+  height: auto;
+  border-radius: 5px; /* Optional: rounded corners */
+}
+
+.footer-branding p {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+/* Footer Navigation Links */
+.footer-links {
+  flex: 1 1 150px; /* Flex properties for responsiveness */
+}
+
+.footer-links h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #14ff72cb;
+}
+
+.footer-links ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+  color: #eee;
+  transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #14ff72cb;
+}
+
+/* Footer Social Media Links */
+.footer-social {
+  flex: 1 1 150px; /* Flex properties for responsiveness */
+}
+
+.footer-social h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #14ff72cb;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons a {
+  color: #eee;
+  font-size: 1.5em;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #14ff72cb;
+}
+
+/* Footer Contact Information */
+.footer-contact {
+  flex: 1 1 250px; /* Flex properties for responsiveness */
+}
+
+.footer-contact h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #14ff72cb;
+}
+
+.footer-contact p {
+  font-size: 0.9em;
+  margin-bottom: 5px;
+  color: #ccc;
+}
+
+.footer-contact a {
+  color: #14ff72cb;
+  transition: color 0.3s;
+}
+
+.footer-contact a:hover {
+  color: #fff;
+}
+
+/* ================================================
+   Responsive Adjustments for Footer Section
+   ================================================ */
+
+/* Tablet and Small Device Adjustments (Max Width: 768px) */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-branding,
+  .footer-links,
+  .footer-social,
+  .footer-contact {
+    flex: 1 1 100%;
+  }
+}
+
+/* Mobile Device Adjustments (Max Width: 480px) */
+@media screen and (max-width: 480px) {
+  .footer-container {
+    padding: 20px 10px;
+  }
+
+  .footer-logo {
+    width: 40px;
+  }
+
+  .footer-links h3,
+  .footer-social h3,
+  .footer-contact h3 {
+    font-size: 1em;
+  }
+
+  .footer-links ul li a,
+  .footer-contact a {
+    font-size: 0.9em;
+  }
+
+  .social-icons a {
+    font-size: 1.2em;
+  }
+}
+
+/* ================================================
+   Prevent Overflow Issues
+   ================================================ */
+
+/* Ensure no horizontal scrolling occurs */
 body,
 html {
   overflow-x: hidden;
 }
 
-/* Additional Existing Styles... */
+/* ================================================
+   Additional Existing Styles...
+   ================================================ */
+/* Add any additional styles here */

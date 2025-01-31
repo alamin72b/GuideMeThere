@@ -2,60 +2,93 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Login - GuideMeThere</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="login">
-        <img src="{% static 'images/travellogin.jpg' %}" alt="login image" class="login__img">
+      <img
+        src="{% static 'images/travellogin.jpg' %}"
+        alt="login image"
+        class="login__img"
+      />
 
-        <form action="{% url 'login' %}" method="post" class="login__form">
-            {% csrf_token %}
-            <h1 class="login__title">Login</h1>
+      <form action="{% url 'login' %}" method="post" class="login__form">
+        {% csrf_token %}
+        <h1 class="login__title">Login</h1>
 
-            <div class="login__content">
-                <div class="login__box">
-                    <i class="ri-user-3-line login__icon"></i>
-                    <div class="login__box-input">
-                        <input type="text" name="username" required class="login__input" id="login-username" placeholder=" ">
-                        <label for="login-username" class="login__label">Username</label>
-                    </div>
-                </div>
-
-                <div class="login__box">
-                    <i class="ri-lock-2-line login__icon"></i>
-                    <div class="login__box-input">
-                        <input type="password" name="password" required class="login__input" id="login-password" placeholder=" ">
-                        <label for="login-password" class="login__label">Password</label>
-                        <i class="ri-eye-line login__eye" id="toggle-password" onclick="togglePassword()"></i>
-                    </div>
-                </div>
+        <div class="login__content">
+          <div class="login__box">
+            <i class="ri-user-3-line login__icon"></i>
+            <div class="login__box-input">
+              <input
+                type="text"
+                name="username"
+                required
+                class="login__input"
+                id="login-username"
+                placeholder=" "
+              />
+              <label for="login-username" class="login__label">Username</label>
             </div>
+          </div>
 
-            <div class="login__check">
-                <div class="login__check-group">
-                    <input type="checkbox" class="login__check-input" id="login-remember">
-                    <label for="login-remember" class="login__check-label">Remember me</label>
-                </div>
-
-                <a href="#" class="login__forgot">Forgot Password?</a>
+          <div class="login__box">
+            <i class="ri-lock-2-line login__icon"></i>
+            <div class="login__box-input">
+              <input
+                type="password"
+                name="password"
+                required
+                class="login__input"
+                id="login-password"
+                placeholder=" "
+              />
+              <label for="login-password" class="login__label">Password</label>
+              <i
+                class="ri-eye-line login__eye"
+                id="toggle-password"
+                onclick="togglePassword()"
+              ></i>
             </div>
+          </div>
+        </div>
 
-            <button type="submit" class="login__button">Login</button>
+        <div class="login__check">
+          <div class="login__check-group">
+            <input
+              type="checkbox"
+              class="login__check-input"
+              id="login-remember"
+            />
+            <label for="login-remember" class="login__check-label"
+              >Remember me</label
+            >
+          </div>
 
-            <p class="login__register">
-                Don't have an account? <a href="{% url 'signup' %}">Register</a>
-            </p>
-        </form>
+          <a href="#" class="login__forgot">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="login__button">Login</button>
+
+        <p class="login__register">
+          Don't have an account? <a href="{% url 'signup' %}">Register</a>
+        </p>
+      </form>
     </div>
 
     <script src="{% static 'js/login.js' %}"></script>
-
-</body>
+  </body>
 </html>

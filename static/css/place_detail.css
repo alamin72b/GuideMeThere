@@ -1,322 +1,371 @@
-    /*************************************************************/
-    /*                         GLOBAL RESET                      */
-    /*************************************************************/
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html, body {
-        width: 100%;
-        min-height: 100vh;
-        background-color: #000; /* black theme */
-        color: #eee;
-        font-size: 16px;
-        font-family: "Akaya Telivigala", cursive, sans-serif;
-        overflow-x: hidden;
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-  
-      /*************************************************************/
-      /*                     HEADER / NAV BAR                      */
-      /*************************************************************/
-      header {
-        width: 100%;
-        max-width: 1140px;
-        margin: 0 auto;
-        height: 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        top: 0;
-        z-index: 9999;
-        padding: 0 20px; /* horizontal space */
-        /* If you want it fixed while scrolling:
-           position: fixed;
-           left: 50%;
-           transform: translateX(-50%);
-           background-color: #000;
-         */
-      }
-      .logo a {
-        font-size: 1.8em;
-        font-weight: bold;
-        color: #14ff72cb;
-        transition: color 0.3s;
-      }
-      .logo a:hover {
-        color: #fff;
-      }
-      nav {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-      nav a {
-        color: #eee;
-        padding: 5px 10px;
-        transition: 0.2s;
-        font-size: 1em;
-      }
-      nav a.active {
-        background: #14ff72cb;
-        border-radius: 2px;
-      }
-      nav a:hover {
-        background: #14ff72cb;
-        border-radius: 2px;
-      }
-      .welcome-message {
-        margin-right: 10px;
-        font-size: 1em;
-        color: #14ff72cb;
-      }
-  
-      /*************************************************************/
-      /*                     MAIN PAGE TITLE                       */
-      /*************************************************************/
-      .page-title {
-        text-align: center;
-        font-size: 2.5em;
-        margin-top: 80px; /* space below nav */
-        color: #14ff72cb;
-        max-width: 1140px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 20px; /* horizontal space on large screens */
-      }
-  
-      /*************************************************************/
-      /*                TABS WRAPPER / CONTAINER                   */
-      /*************************************************************/
-      .tabs-container {
-        width: 100%;
-        display: flex;
-        margin-top: 40px;
-        max-width: 1140px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 20px; /* horizontal spacing */
-      }
-  
-      /* Hide radio buttons */
-      .tabs-container input[type="radio"] {
-        display: none;
-      }
-  
-      /*************************************************************/
-      /*                       TABS LIST (LEFT)                    */
-      /*************************************************************/
-      .tabs-list {
-        width: 200px;
-        flex-shrink: 0;
-        background: #111;
-        position: relative;
-      }
-      .tabs-list label {
-        display: block;
-        padding: 15px 20px;
-        cursor: pointer;
-        border-bottom: 1px solid #222;
-        color: #eee;
-        font-size: 1.1em;
-        transition: color 0.3s;
-      }
-      .tabs-list label i {
-        margin-right: 8px;
-      }
-      .tabs-list label:hover {
-        color: #14ff72cb;
-      }
-  
-      /* The highlight bar for the active tab */
+/*************************************************************/
+/*                         GLOBAL RESET                      */
+/*************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000; /* black theme */
+  color: #eee;
+  font-size: 16px;
+  font-family: "Akaya Telivigala", cursive, sans-serif;
+  overflow-x: hidden;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-      /* Active tab label color */
-      #details:checked ~ .tabs-list label[for="details"],
-      #location:checked ~ .tabs-list label[for="location"],
-      #reviews:checked ~ .tabs-list label[for="reviews"],
-      #addreview:checked ~ .tabs-list label[for="addreview"] {
-        color: #14ff72cb;
-      }
-  
-      /*************************************************************/
-      /*                  TABS CONTENT (RIGHT)                     */
-      /*************************************************************/
-      .tabs-content {
-        flex: 1; /* fill remaining width */
-        background: #000;
-        padding: 20px;
-        border-left: 1px solid #222;
-      }
-  
-      /* Hide all tab panels by default */
-      .tab-panel {
-        display: none;
-      }
-      /* Show relevant panel when checked */
-      #details:checked ~ .tabs-content .details-tab,
-      #location:checked ~ .tabs-content .location-tab,
-      #reviews:checked ~ .tabs-content .reviews-tab,
-      #addreview:checked ~ .tabs-content .addreview-tab {
-        display: block;
-      }
-  
-      .tab-panel h2 {
-        font-size: 1.8em;
-        color: #14ff72cb;
-        margin-bottom: 20px;
-      }
-  
-      /*************************************************************/
-      /*                DETAILS TAB (SINGLE IMAGE)                 */
-      /*************************************************************/
-      .detail-image {
-        background-color: #222;
-        border-radius: 10px;
-        overflow: hidden;
-        max-width: 400px; /* or adjust as needed */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-      .detail-image:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-      }
-      .detail-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-  
-      /*************************************************************/
-      /*                LOCATION TAB (Placeholder)                 */
-      /*************************************************************/
-      /* .location-tab { } if you want specific styles */
-  
-      /*************************************************************/
-      /*                 REVIEWS TAB (Grid or list)                */
-      /*************************************************************/
-      .reviews-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
-      .review-card {
-        background-color: #222;
-        border-radius: 8px;
-        padding: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-      .review-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-      }
-      .review-card strong {
-        color: #14ff72cb;
-      }
-      .review-card p {
-        margin-top: 10px;
-      }
-  
-      /*************************************************************/
-      /*              ADD REVIEW TAB (Form styles)                 */
-      /*************************************************************/
-      .review-form {
-        max-width: 600px;
-        display: flex;
-        flex-direction: column;
-      }
-      .review-form label {
-        margin-top: 10px;
-        margin-bottom: 5px;
-        font-weight: bold;
-      }
-      .review-form input,
-      .review-form textarea {
-        padding: 8px;
-        border: 1px solid #333;
-        background-color: #222;
-        color: #eee;
-        border-radius: 4px;
-      }
-      .review-form button {
-        margin-top: 15px;
-        padding: 10px 15px;
-        background-color: #14ff72cb;
-        color: #000;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s, color 0.3s;
-      }
-      .review-form button:hover {
-        background-color: #fff;
-        color: #000;
-      }
-  
-      /*************************************************************/
-      /*             RESPONSIVE ADJUSTMENTS (Optional)             */
-      /*************************************************************/
-      @media screen and (max-width: 768px) {
-        header {
-          flex-direction: column;
-          height: auto;
-          padding: 10px 20px;
-        }
-        nav {
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 10px;
-        }
-        .page-title {
-          margin-top: 120px; /* extra space if header isn't fixed */
-        }
-        .tabs-container {
-          flex-direction: column;
-          padding: 0 20px;
-        }
-        .tabs-list {
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          border-right: none;
-          border-bottom: 1px solid #222;
-          height: auto;
-        }
-        .tabs-list label {
-          border-bottom: none;
-          border-right: 1px solid #222;
-          flex: 1;
-          text-align: center;
-          padding: 15px 0;
-        }
-        .tab-indicator {
-          width: 100%;
-          height: 5px;
-          left: 0;
-          transform: translateY(0);
-        }
-        /* shift indicator horizontally for each tab in row */
-        #details:checked ~ .tabs-list .tab-indicator {
-          transform: translateX(0);
-        }
-        #location:checked ~ .tabs-list .tab-indicator {
-          transform: translateX(100%);
-        }
-        #reviews:checked ~ .tabs-list .tab-indicator {
-          transform: translateX(200%);
-        }
-        #addreview:checked ~ .tabs-list .tab-indicator {
-          transform: translateX(300%);
-        }
-        .tabs-content {
-          border-top: 1px solid #222;
-          border-left: none;
-        }
-      }
+/*************************************************************/
+/*                     HEADER / NAV BAR                      */
+/*************************************************************/
+/* Header Styling */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 9999; /* Make sure it stays on top */
+  background-color: #000; /* Solid background color */
+  padding: 0 20px; /* Horizontal padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Optional: subtle shadow */
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between image and text */
+}
+
+.logo img {
+  width: 40px; /* Adjust the size as needed */
+  height: auto;
+  border-radius: 5px; /* Optional: rounded corners */
+  max-width: 100%; /* Ensure it doesn’t overflow its container */
+  object-fit: contain; /* Scale the image within its box */
+  display: block; /* Prevent extra space below the image */
+}
+
+.logo a {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #14ff72cb; /* Highlighted color for logo text */
+  transition: color 0.3s;
+}
+
+.logo a:hover {
+  color: #fff;
+}
+
+/* Navigation Styling */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between navigation links */
+}
+
+nav a {
+  color: #eee;
+  padding: 5px 10px;
+  transition: 0.2s;
+  font-size: 1em;
+}
+
+nav a.active {
+  background: #14ff72cb;
+  border-radius: 2px;
+}
+
+nav a:hover {
+  background: #14ff72cb;
+  border-radius: 2px;
+}
+
+.welcome-message {
+  margin-right: 10px;
+  font-size: 1em;
+  color: #14ff72cb;
+}
+
+/* Search Form Styling */
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-form input {
+  padding: 5px 8px;
+  border: 1px solid #333;
+  background-color: #222;
+  color: #eee;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-form button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #14ff72cb;
+  color: #000;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+  background-color: #fff;
+}
+
+/*************************************************************/
+/*                     MAIN PAGE TITLE                       */
+/*************************************************************/
+.page-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin-top: 80px; /* space below nav */
+  color: #14ff72cb;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px; /* horizontal space on large screens */
+}
+
+/*************************************************************/
+/*                TABS WRAPPER / CONTAINER                   */
+/*************************************************************/
+.tabs-container {
+  width: 100%;
+  display: flex;
+  margin-top: 40px;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px; /* horizontal spacing */
+}
+
+/* Hide radio buttons */
+.tabs-container input[type="radio"] {
+  display: none;
+}
+
+/*************************************************************/
+/*                       TABS LIST (LEFT)                    */
+/*************************************************************/
+.tabs-list {
+  width: 200px;
+  flex-shrink: 0;
+  background: #111;
+  position: relative;
+}
+.tabs-list label {
+  display: block;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #222;
+  color: #eee;
+  font-size: 1.1em;
+  transition: color 0.3s;
+}
+.tabs-list label i {
+  margin-right: 8px;
+}
+.tabs-list label:hover {
+  color: #14ff72cb;
+}
+
+/* The highlight bar for the active tab */
+
+/* Active tab label color */
+#details:checked ~ .tabs-list label[for="details"],
+#location:checked ~ .tabs-list label[for="location"],
+#reviews:checked ~ .tabs-list label[for="reviews"],
+#addreview:checked ~ .tabs-list label[for="addreview"] {
+  color: #14ff72cb;
+}
+
+/*************************************************************/
+/*                  TABS CONTENT (RIGHT)                     */
+/*************************************************************/
+.tabs-content {
+  flex: 1; /* fill remaining width */
+  background: #000;
+  padding: 20px;
+  border-left: 1px solid #222;
+}
+
+/* Hide all tab panels by default */
+.tab-panel {
+  display: none;
+}
+/* Show relevant panel when checked */
+#details:checked ~ .tabs-content .details-tab,
+#location:checked ~ .tabs-content .location-tab,
+#reviews:checked ~ .tabs-content .reviews-tab,
+#addreview:checked ~ .tabs-content .addreview-tab {
+  display: block;
+}
+
+.tab-panel h2 {
+  font-size: 1.8em;
+  color: #14ff72cb;
+  margin-bottom: 20px;
+}
+
+/*************************************************************/
+/*                DETAILS TAB (SINGLE IMAGE)                 */
+/*************************************************************/
+.detail-image {
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 400px; /* or adjust as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.detail-image:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+.detail-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*************************************************************/
+/*                LOCATION TAB (Placeholder)                 */
+/*************************************************************/
+/* .location-tab { } if you want specific styles */
+
+/*************************************************************/
+/*                 REVIEWS TAB (Grid or list)                */
+/*************************************************************/
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.review-card {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.review-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+.review-card strong {
+  color: #14ff72cb;
+}
+.review-card p {
+  margin-top: 10px;
+}
+
+/*************************************************************/
+/*              ADD REVIEW TAB (Form styles)                 */
+/*************************************************************/
+.review-form {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+.review-form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.review-form input,
+.review-form textarea {
+  padding: 8px;
+  border: 1px solid #333;
+  background-color: #222;
+  color: #eee;
+  border-radius: 4px;
+}
+.review-form button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #14ff72cb;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+.review-form button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/*************************************************************/
+/*             RESPONSIVE ADJUSTMENTS (Optional)             */
+/*************************************************************/
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 20px;
+  }
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .page-title {
+    margin-top: 120px; /* extra space if header isn't fixed */
+  }
+  .tabs-container {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  .tabs-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid #222;
+    height: auto;
+  }
+  .tabs-list label {
+    border-bottom: none;
+    border-right: 1px solid #222;
+    flex: 1;
+    text-align: center;
+    padding: 15px 0;
+  }
+  .tab-indicator {
+    width: 100%;
+    height: 5px;
+    left: 0;
+    transform: translateY(0);
+  }
+  /* shift indicator horizontally for each tab in row */
+  #details:checked ~ .tabs-list .tab-indicator {
+    transform: translateX(0);
+  }
+  #location:checked ~ .tabs-list .tab-indicator {
+    transform: translateX(100%);
+  }
+  #reviews:checked ~ .tabs-list .tab-indicator {
+    transform: translateX(200%);
+  }
+  #addreview:checked ~ .tabs-list .tab-indicator {
+    transform: translateX(300%);
+  }
+  .tabs-content {
+    border-top: 1px solid #222;
+    border-left: none;
+  }
+}
