@@ -18,6 +18,40 @@
     <title>Login - GuideMeThere</title>
   </head>
   <body>
+    <!-- Header Navigation -->
+    <header>
+      <div class="logo">
+        <!-- Home Page Link with Site Logo -->
+        <a href="{% url 'home' %}">
+          <img src="{% static 'images/Logo.webp' %}" alt="GuideMeThere Logo"/>
+        </a>
+        <a href="{% url 'home' %}">GuideMeThere</a>
+      </div>
+      
+      <!-- Navigation Bar -->
+      <nav>
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        
+        <!-- Authentication Links -->
+        {% if user.is_authenticated %}
+          <span class="welcome-message">Hello, {{ user.username }}!</span>
+          <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+      </nav>
+      
+      <!-- Search Form -->
+      <form action="{% url 'search' %}" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search places..." />
+        <button type="submit">Search</button>
+      </form>
+    </header>
+
     <div class="login">
       <img
         src="{% static 'images/travellogin.jpg' %}"

@@ -1,195 +1,224 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <!-- Character Set and Responsive Viewport -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Page Title -->
     <title>GuideMeThere - Home</title>
-    
+
     <!-- External CSS -->
     <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-    
-    <!-- Google Fonts for Enhanced Typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet" />
-</head>
 
-<body>
+    <!-- Google Fonts for Enhanced Typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
     <!-- Site Header with Navigation and Logo -->
     <header>
-        <div class="logo">
-            <!-- Home Page Link with Site Logo -->
-            <a href="{% url 'home' %}">
-                <img src="{% static 'images/Logo.webp' %}" alt="GuideMeThere Logo" style="width: 40px; height: auto; display: block;">
-            </a>
-            <a href="{% url 'home' %}">GuideMeThere</a>
-        </div>
-        
-        <!-- Navigation Bar -->
-        <nav>
-            <a href="{% url 'home' %}" class="active">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-            <!-- Authentication Links -->
-            {% if user.is_authenticated %}
-                <span class="welcome-message">Hello, {{ user.username }}!</span>
-                <a href="{% url 'logout' %}">Logout</a>
-            {% else %}
-                <a href="{% url 'login' %}">Login</a>
-                <a href="{% url 'signup' %}">Sign Up</a>
-            {% endif %}
-        </nav>
-        
-        <!-- Search Form -->
-        <form action="{% url 'search' %}" method="GET" class="search-form">
-            <input type="text" name="q" placeholder="Search places..." />
-            <button type="submit">Search</button>
-        </form>
+      <div class="logo">
+        <!-- Home Page Link with Site Logo -->
+        <a href="{% url 'home' %}">
+          <img
+            src="{% static 'images/Logo.webp' %}"
+            alt="GuideMeThere Logo"
+            style="width: 40px; height: auto; display: block"
+          />
+        </a>
+        <a href="{% url 'home' %}">GuideMeThere</a>
+      </div>
+
+      <!-- Navigation Bar -->
+      <nav>
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        <!-- Authentication Links -->
+        {% if user.is_authenticated %}
+        <span class="welcome-message">Hello, {{ user.username }}!</span>
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+      </nav>
+
+      <!-- Search Form -->
+      <form action="{% url 'search' %}" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search places..." />
+        <button type="submit">Search</button>
+      </form>
     </header>
 
     <!-- Image Slider Section -->
     <div class="slider">
-        <!-- Slider Items -->
-        <div class="list">
-            {% for place in places %}
-            <div class="item">
-                {% if place.image %}
-                <img src="{{ place.image.url }}" alt="{{ place.name }}" />
-                {% else %}
-                <img src="{% static 'images/img1.jpg' %}" alt="Default Image" />
-                {% endif %}
-                <!-- Slider Content -->
-                <div class="content">
-                    <div class="type">{{ place.name }}</div>
-                    <div class="description">{{ place.description }}</div>
-                    <div class="button">
-                        <a href="{% url 'place_detail' place.id %}">SEE MORE</a>
-                    </div>
-                </div>
+      <!-- Slider Items -->
+      <div class="list">
+        {% for place in places %}
+        <div class="item">
+          {% if place.image %}
+          <img src="{{ place.image.url }}" alt="{{ place.name }}" />
+          {% else %}
+          <img src="{% static 'images/img1.jpg' %}" alt="Default Image" />
+          {% endif %}
+          <!-- Slider Content -->
+          <div class="content">
+            <div class="type">{{ place.name }}</div>
+            <div class="description">{{ place.description }}</div>
+            <div class="button">
+              <a href="{% url 'place_detail' place.id %}">SEE MORE</a>
             </div>
-            {% endfor %}
+          </div>
         </div>
+        {% endfor %}
+      </div>
 
-        <!-- Slider Thumbnails for Quick Navigation -->
-        <div class="thumbnail">
-            {% for place in places %}
-            <div class="item">
-                {% if place.image %}
-                <img src="{{ place.image.url }}" alt="{{ place.name }}" />
-                {% else %}
-                <img src="{% static 'images/img1.jpg' %}" alt="Default Image" />
-                {% endif %}
-            </div>
-            {% endfor %}
+      <!-- Slider Thumbnails for Quick Navigation -->
+      <div class="thumbnail">
+        {% for place in places %}
+        <div class="item">
+          {% if place.image %}
+          <img src="{{ place.image.url }}" alt="{{ place.name }}" />
+          {% else %}
+          <img src="{% static 'images/img1.jpg' %}" alt="Default Image" />
+          {% endif %}
         </div>
+        {% endfor %}
+      </div>
 
-        <!-- Slider Navigation Arrows -->
-        <div class="nextPrevArrows">
-            <button class="prev"><</button>
-            <button class="next">></button>
-        </div>
+      <!-- Slider Navigation Arrows -->
+      <div class="nextPrevArrows">
+        <button class="prev"><</button>
+        <button class="next">></button>
+      </div>
     </div>
 
     <!-- Grid Section to Showcase Places -->
     <section class="places-grid">
-        <h2>Explore Our Places</h2>
-        <div class="grid-container">
-            {% for place in places %}
-            <div class="grid-item">
-                <div class="place-image">
-                    {% if place.image %}
-                    <img src="{{ place.image.url }}" alt="{{ place.name }}" loading="lazy" />
-                    {% else %}
-                    <img src="{% static 'images/img1.jpg' %}" alt="Default Image" loading="lazy" />
-                    {% endif %}
-                </div>
-                <div class="place-info">
-                    <h3>{{ place.name }}</h3>
-                    <p>{{ place.description|truncatechars:100 }}</p>
-                    <a href="{% url 'place_detail' place.id %}" class="see-more">See More</a>
-                </div>
-            </div>
-            {% endfor %}
+      <h2>Explore Our Places</h2>
+      <div class="grid-container">
+        {% for place in places %}
+        <div class="grid-item">
+          <div class="place-image">
+            {% if place.image %}
+            <img
+              src="{{ place.image.url }}"
+              alt="{{ place.name }}"
+              loading="lazy"
+            />
+            {% else %}
+            <img
+              src="{% static 'images/img1.jpg' %}"
+              alt="Default Image"
+              loading="lazy"
+            />
+            {% endif %}
+          </div>
+          <div class="place-info">
+            <h3>{{ place.name }}</h3>
+            <p>{{ place.description|truncatechars:100 }}</p>
+            <a href="{% url 'place_detail' place.id %}" class="see-more"
+              >See More</a
+            >
+          </div>
         </div>
+        {% endfor %}
+      </div>
     </section>
 
     <!-- Reviews Section for User Feedback -->
     <section class="reviews-section">
-        <h2>What People Say About Our Places</h2>
-        <div class="reviews-container">
-            {% for review in reviews %}
-            <div class="review-item">
-                <div class="review-header">
-                    <div class="reviewer-name">{{ review.name }}</div>
-                    <div class="review-rating">
-                        {% for i in "12345"|slice:":review.rating" %}
-                        <span class="star">&#9733;</span>
-                        {% endfor %}
-                        {% for i in "12345"|slice:"review.rating:" %}
-                        <span class="star">&#9734;</span>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="review-comment">{{ review.comment|linebreaks }}</div>
-                <div class="review-place">
-                    <a href="{% url 'place_detail' review.place.id %}">{{ review.place.name }}</a>
-                </div>
+      <h2>What People Say About Our Places</h2>
+      <div class="reviews-container">
+        {% for review in reviews %}
+        <div class="review-item">
+          <div class="review-header">
+            <div class="reviewer-name">{{ review.name }}</div>
+            <div class="review-rating">
+              {% for i in "12345"|slice:":review.rating" %}
+              <span class="star">&#9733;</span>
+              {% endfor %} {% for i in "12345"|slice:"review.rating:" %}
+              <span class="star">&#9734;</span>
+              {% endfor %}
             </div>
-            {% empty %}
-            <p>No reviews yet. Be the first to review!</p>
-            {% endfor %}
+          </div>
+          <div class="review-comment">{{ review.comment|linebreaks }}</div>
+          <div class="review-place">
+            <a href="{% url 'place_detail' review.place.id %}"
+              >{{ review.place.name }}</a
+            >
+          </div>
         </div>
+        {% empty %}
+        <p>No reviews yet. Be the first to review!</p>
+        {% endfor %}
+      </div>
     </section>
     <!-- End of Reviews Section -->
 
     <!-- Footer Section -->
     <footer>
-        <!-- Footer Container -->
-        <div class="footer-container">
-            <!-- Footer Branding -->
-            <div class="footer-branding">
-                <a href="{% url 'home' %}">
-                    <img src="{% static 'images/Logo.webp' %}" alt="GuideMeThere Logo" class="footer-logo">
-                </a>
-                <p>&copy; 2025 GuideMeThere. All rights reserved.</p>
-            </div>
-
-            <!-- Footer Navigation Links -->
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Footer Social Media Links -->
-            <div class="footer-social">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-
-            <!-- Footer Contact Information -->
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p>Email: <a href="mailto:info@guidemethere.com">info@guidemethere.com</a></p>
-                <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
-            </div>
+      <!-- Footer Container -->
+      <div class="footer-container">
+        <!-- Footer Branding -->
+        <div class="footer-branding">
+          <a href="{% url 'home' %}">
+            <img
+              src="{% static 'images/Logo.webp' %}"
+              alt="GuideMeThere Logo"
+              class="footer-logo"
+            />
+          </a>
+          <p>&copy; 2025 GuideMeThere. All rights reserved.</p>
         </div>
+
+        <!-- Footer Navigation Links -->
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Footer Social Media Links -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Footer Contact Information -->
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p>
+            Email:
+            <a href="mailto:info@guidemethere.com">info@guidemethere.com</a>
+          </p>
+          <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        </div>
+      </div>
     </footer>
     <!-- End of Footer Section -->
 
     <!-- External JavaScript -->
     <script src="{% static 'js/home.js' %}"></script>
-</body>
+  </body>
 </html>

@@ -1,135 +1,239 @@
-
-
-/* General Styles */
-body {
-    margin: 0;
-    padding: 0;
-    font-family:'Akaya Telivigala', cursive, sans-serif; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(to bottom, #ff758c, #ff7eb3);
-}
-
-/* Signup Container */
-.signup-container {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-}
-
-.signup-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.signup-title {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.signup-subtitle {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.signup-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.input-group {
-    text-align: left;
-}
-
-.input-label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    font-size: 1rem;
-    background: #f9f9f9;
-    transition: all 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border-color: #ff758c;
-    outline: none;
-    background: #fff;
-}
-
-.primary-btn {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    background: linear-gradient(to right, #ff758c, #ff7eb3);
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
-
-.primary-btn:hover {
-    background: linear-gradient(to right, #ff7eb3, #ff758c);
-}
-
-.secondary-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    background: #e7f3ff;
-    color: #3b5998;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    margin-top: 10px;
-    gap: 10px;
-}
-
-.secondary-btn img {
-    width: 20px;
-    height: 20px;
-}
-
-.already-member {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 15px;
-}
-
-.already-member a {
-    color: #ff758c;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.already-member a:hover {
-    color: #ff7eb3;
-}
+      /* ==============================
+         VARIABLES & BASE STYLES
+         ============================== */
+         :root {
+            /* Colors */
+            --white-color: hsl(0, 0%, 100%);
+            --black-color: hsl(0, 0%, 0%);
+            /* Typography */
+            --body-font: 'Akaya Telivigala', cursive, sans-serif;
+            --h1-font-size: 1.75rem;
+            --normal-font-size: 1rem;
+            --small-font-size: 0.813rem;
+            /* Font weight */
+            --font-medium: 500;
+          }
+    
+          /* Reset / Base */
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          body {
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            color: var(--white-color);
+            background-color: #000; /* Fallback background if image fails */
+          }
+          a {
+            text-decoration: none;
+            color: inherit;
+          }
+          input, button {
+            border: none;
+            outline: none;
+            font-family: var(--body-font);
+          }
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+    
+          /* ==============================
+             HEADER (Fixed Navbar)
+             ============================== */
+          header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+            background-color: #000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+          }
+          .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+          .logo img {
+            width: 40px;
+            height: auto;
+            border-radius: 5px;
+          }
+          .logo a {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #14ff72cb;
+            transition: color 0.3s;
+          }
+          .logo a:hover {
+            color: #fff;
+          }
+          nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+          }
+          nav a {
+            color: #eee;
+            padding: 5px 10px;
+            transition: 0.2s;
+          }
+          nav a.active {
+            background: #14ff72cb;
+            border-radius: 2px;
+          }
+          nav a:hover {
+            background: #14ff72cb;
+            border-radius: 2px;
+          }
+          .welcome-message {
+            margin-right: 10px;
+            font-size: 1em;
+            color: #14ff72cb;
+          }
+          .search-form {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+          }
+          .search-form input {
+            padding: 5px 8px;
+            border: 1px solid #333;
+            background-color: #222;
+            color: #eee;
+            border-radius: 4px 0 0 4px;
+          }
+          .search-form button {
+            padding: 5px 10px;
+            background-color: #14ff72cb;
+            color: #000;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+            transition: background-color 0.3s;
+          }
+          .search-form button:hover {
+            background-color: #fff;
+          }
+    
+          /* ==============================
+             PAGE BACKGROUND & OVERLAY
+             ============================== */
+          .page-bg {
+            /* Full-page container for background image */
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            /* Make room for fixed header */
+            padding-top: 60px;
+            /* The background image: adjust path if needed */
+            background: url("{% static 'images/travellogin.jpg' %}") no-repeat center center/cover;
+          }
+          /* Dark overlay for better contrast behind the form */
+          .page-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+          }
+    
+          /* ==============================
+             SIGNUP FORM CARD
+             ============================== */
+          .signup-wrapper {
+            /* Use flex to center card horizontally & vertically */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 60px);
+            position: relative;
+            z-index: 2; /* Above the dark overlay */
+          }
+          .signup-card {
+            width: 360px;
+            max-width: 90%;
+            background-color: hsla(0, 0%, 10%, 0.2); /* Transparent style */
+            border: 2px solid var(--white-color);
+            border-radius: 1rem;
+            backdrop-filter: blur(8px);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+          }
+          .signup-title {
+            font-size: 2rem;
+            font-weight: var(--font-medium);
+            margin-bottom: 0.5rem;
+          }
+          .signup-subtitle {
+            font-size: var(--normal-font-size);
+            margin-bottom: 2rem;
+            color: #14ff72cb;
+          }
+          .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+          .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+          }
+          .input-label {
+            margin-bottom: 0.25rem;
+            font-size: var(--small-font-size);
+          }
+          .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: var(--normal-font-size);
+            border-radius: 0.25rem;
+            background-color: #333;
+            color: #eee;
+          }
+          .primary-btn {
+            background-color: var(--white-color);
+            color: var(--black-color);
+            font-weight: var(--font-medium);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          }
+          .primary-btn:hover {
+            background-color: #14ff72cb;
+            color: #000;
+          }
+          .already-member {
+            margin-top: 1rem;
+            font-size: var(--small-font-size);
+          }
+          .already-member a {
+            color: var(--white-color);
+            font-weight: var(--font-medium);
+          }
+          .already-member a:hover {
+            text-decoration: underline;
+          }
+    
+          @media screen and (min-width: 576px) {
+            .signup-card {
+              width: 400px;
+              padding: 3rem;
+            }
+            .signup-title {
+              font-size: 2rem;
+            }
+          }

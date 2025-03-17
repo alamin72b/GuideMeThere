@@ -12,37 +12,111 @@
 </head>
 <body>
     
-    <div class="signup-container">
+    Contains logo, navigation links, authentication checks, and search form.
+    -->
+    <header>
+      <div class="logo">
+        <!-- Home Page Link with Site Logo -->
+        <a href="{% url 'home' %}">
+          <img src="{% static 'images/Logo.webp' %}" alt="GuideMeThere Logo" />
+        </a>
+        <a href="{% url 'home' %}">GuideMeThere</a>
+      </div>
+      
+      <!-- Navigation Bar -->
+      <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        
+        <!-- Authentication Links -->
+        {% if user.is_authenticated %}
+          <span class="welcome-message">Hello, {{ user.username }}!</span>
+          <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+      </nav>
+
+      <!-- Search Form -->
+      <form action="{% url 'search' %}" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search places..." />
+        <button type="submit">Search</button>
+      </form>
+    </header>
+
+    <!-- 
+      ============== PAGE BACKGROUND WRAPPER ==============
+      Includes the dark overlay behind the form.
+    -->
+    <div class="page-bg">
+      <!-- 
+        ============== SIGNUP FORM WRAPPER ==============
+        Centers the transparent card on the page.
+      -->
+      <div class="signup-wrapper">
         <div class="signup-card">
-            <h1 class="signup-title">Create Account,</h1>
-            <p class="signup-subtitle">Sign up to get started!</p>
-            <form action="{% url 'signup' %}" method="post" class="signup-form">
-                {% csrf_token %}
-                <div class="input-group">
-                    <label for="username" class="input-label">Full Name</label>
-                    <input type="text" id="username" name="username" placeholder="Andrew Heston" required>
-                </div>
+          <h1 class="signup-title">Create Account,</h1>
+          <p class="signup-subtitle">Sign up to get started!</p>
+          
+          <!-- Signup Form -->
+          <form action="{% url 'signup' %}" method="post" class="signup-form">
+            {% csrf_token %}
+            <div class="input-group">
+              <label for="username" class="input-label">Full Name</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Username"
+                required
+              />
+            </div>
 
-                <div class="input-group">
-                    <label for="email" class="input-label">Email ID</label>
-                    <input type="email" id="email" name="email" placeholder="andrewheston@gmail.com" required>
-                </div>
+            <div class="input-group">
+              <label for="email" class="input-label">Email ID</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@gmail.com"
+                required
+              />
+            </div>
 
-                <div class="input-group">
-                    <label for="password1" class="input-label">Password</label>
-                    <input type="password" id="password1" name="password1" placeholder="●●●●●●●●" required>
-                </div>
+            <div class="input-group">
+              <label for="password1" class="input-label">Password</label>
+              <input
+                type="password"
+                id="password1"
+                name="password1"
+                placeholder=\"●●●●●●●●\"
+                required
+              />
+            </div>
 
-                <div class="input-group">
-                    <label for="password2" class="input-label">Confirm Password</label>
-                    <input type="password" id="password2" name="password2" placeholder="●●●●●●●●" required>
-                </div>
+            <div class="input-group">
+              <label for="password2" class="input-label">Confirm Password</label>
+              <input
+                type="password"
+                id="password2"
+                name="password2"
+                placeholder=\"●●●●●●●●\"
+                required
+              />
+            </div>
 
-                <button type="submit" class="primary-btn">Sign Up</button>
-              
-            </form>
-            <p class="already-member">I'm already a member, <a href="{% url 'login' %}">Sign In</a></p>
+            <button type="submit" class="primary-btn">Sign Up</button>
+          </form>
+
+          <p class="already-member">
+            I'm already a member,
+            <a href="{% url 'login' %}">Sign In</a>
+          </p>
         </div>
+      </div>
     </div>
 </body>
 </html>
